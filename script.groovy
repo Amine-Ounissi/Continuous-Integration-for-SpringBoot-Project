@@ -8,8 +8,10 @@ def mvncompile() {
 }
 def mvnsonarqube() {
   echo "Analyzing the application..."
-  sh'mvn admin:sonar -Dsonar.login=myAuthenticationToken'
+  sh'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
 }
+//def junitmockito(){
+  
 
 
   return this
