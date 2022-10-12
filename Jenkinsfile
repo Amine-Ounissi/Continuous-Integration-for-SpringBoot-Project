@@ -14,13 +14,27 @@ pipeline {
          }
        }
      }
-    stage("build jar") {
-      
+    stage("MVN CLEAN") {      
       steps {
         script {
-          gv.buildJar()    
+          gv.mvnclean()    
       }
     }
   }
+    stage("MVN COMPILE") {
+      steps {
+        script {
+          gv.mvncompile()
+      }
+    }
+  }
+    stage("MVN SONARQUBE") {
+      steps {
+        script {
+          gv.mvnsonarqube()
+      }
+    }
+  }
+
  }
 }
