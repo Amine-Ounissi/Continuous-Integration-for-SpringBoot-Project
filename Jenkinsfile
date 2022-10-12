@@ -40,5 +40,12 @@ pipeline {
       echo 'hello world'
   }
  }
-}
+  stage('NEXUS') {
+    steps{
+      script {
+        gv.deploynexus
+      }
+    }
+   }
+  }
 }
