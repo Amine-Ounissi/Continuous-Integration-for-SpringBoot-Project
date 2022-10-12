@@ -35,6 +35,10 @@ pipeline {
       }
     }
   }
-
+   stage('JUNIT-MOCKITO'){
+     steps{
+      echo 'hello world'
+  }
  }
+}
 }
