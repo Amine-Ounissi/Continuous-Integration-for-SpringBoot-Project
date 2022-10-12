@@ -4,11 +4,10 @@ def mvnclean() {
 }
 def mvncompile() {
   echo "compiling the application..."
-  sh'mvn compile'
+  sh'mvn install'
 }
 def mvnsonarqube() {
   echo "Analyzing the application..."
-  sh'mvn clean install'
   sh'mvn sonar:sonar -Dsonar.login=myAuthenticationToken'
 }
 
