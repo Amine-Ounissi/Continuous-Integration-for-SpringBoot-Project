@@ -10,8 +10,11 @@ def mvnsonarqube() {
   echo "Analyzing the application..."
   sh'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
 }
+def deploynexus() {
+echo "Deploy to nexus..."
+ sh'mvn deploy -DskipTests'
 //def junitmockito(){
-  
+}
 
 
   return this
