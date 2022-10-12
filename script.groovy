@@ -4,7 +4,7 @@ def mvnclean() {
 }
 def mvncompile() {
   echo "compiling the application..."
-  sh'mvn install'
+  sh'mvn compile'
 }
 def mvnsonarqube() {
   echo "Analyzing the application..."
