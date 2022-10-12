@@ -43,7 +43,7 @@ pipeline {
   stage('NEXUS') {
     steps{
       script {
-        gv.deploynexus
+        gv.deploynexus()
       }
     }
    }
