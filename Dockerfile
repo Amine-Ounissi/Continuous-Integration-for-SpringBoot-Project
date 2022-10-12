@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:11
 ADD target/achat-1.0-*.jar achat-1.0.jar
 EXPOSE 8080
 
