@@ -7,8 +7,9 @@ def mvncompile() {
   sh'mvn compile'
 }
 def mvnsonarqube() {
-  echo ".. the application..."
+  echo "Analyzing the application..."
   sh'mvn clean install'
+  sh'mvn sonar:sonar -Dsonar.login=myAuthenticationToken'
 }
 
 
