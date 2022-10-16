@@ -37,7 +37,7 @@ pipeline {
   }
    stage('JUNIT-MOCKITO'){
      steps{
-      echo 'hello world'
+          gv.JunitMockito()
   }
  }
   stage('NEXUS') {
