@@ -35,9 +35,11 @@ pipeline {
       }
     }
   }
-   stage('JUNIT-MOCKITO'){
+   stage('JUNIT-MOCKITO') {
      steps{
+      script {
           gv.JunitMockito()
+   }
   }
  }
   stage('NEXUS') {
