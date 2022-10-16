@@ -55,3 +55,4 @@ public class StockServiceImpTest {
         Assertions.assertNull(StockServiceImpl.retrieveStock(s.getIdStock()));
 
     }
+}
