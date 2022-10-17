@@ -11,9 +11,9 @@ def mvnsonarqube() {
   sh'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
 }
 
-def JunitMockito(){
+def JunitMockito() {
   echo "Testing the application..."
-  sh'mvn test -Dtest=StockServiceImpTest,StockServiceImpTestMock,ProduitServiceTest'
+  sh'mvn test -Dtest=StockServiceImpTestMock'
 }
 def deploynexus() {
 echo "Deploy to nexus..."
