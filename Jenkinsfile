@@ -36,18 +36,18 @@ pipeline {
     }
   }
    stage('JUNIT-MOCKITO') {
-     steps{
+     steps {
       script {
-          gv.JunitMockito()
+        gv.JunitMockito()
    }
   }
  }
   stage('NEXUS') {
-    steps{
+    steps {
       script {
         gv.deploynexus()
+        }
       }
     }
-   }
   }
 }
