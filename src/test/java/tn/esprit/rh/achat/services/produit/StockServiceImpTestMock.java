@@ -34,7 +34,17 @@ StockServiceImpl stockServiceImpl;
             add(Stock.builder().libelleStock("stock test2").qte(300).qteMin(30).build());
         }
     };
-       
+    
+    @Test
+    public void testRetrieveStock() {
+        
+        Stock stock= Stock.builder().libelleStock("stock test").qte(100).qteMin(10).build();
+		stock.setIdStock(1L);
+        Mockito.when(stockRepository.findById(1L)).thenReturn(Optional.of(stock));
+        Stock stock1 = stockServiceImpl.retrieveStock((1L);
+        Assertions.assertNotNull(stock1);
+        System.out.println(" Retrieve is working ");
+    } 
 
     @Test
     public void testRetrieveAllStock() {
@@ -47,6 +57,9 @@ StockServiceImpl stockServiceImpl;
 
     @Test
     public void testAddstock() {
+        Stock stock= Stock.builder().libelleStock("stock test").qte(100).qteMin(10).build();
+		stock.setIdStock(1L);
+		        
         Mockito.when(stockRepository.save(stock)).thenReturn(stock);
         Stock stock1 = stockServiceImpl.addStock(stock);
         Assertions.assertNotNull(stock1);
