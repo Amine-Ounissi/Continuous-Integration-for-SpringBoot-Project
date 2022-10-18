@@ -40,13 +40,15 @@ StockServiceImpl stockServiceImpl;
         Mockito.when(stockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
         Stock stock1 = stockServiceImpl.retrieveStock(new Long(2));
         Assertions.assertNotNull(stock1);
+        System.out.println(" Retrieve is working ");
     }
 
     @Test
-    public void testAllRetrieveStock() {
+    public void testRetrieveAllStock() {
         Mockito.when(stockRepository.findAll()).thenReturn(listStocks);
         List<Stock> lStocks = stockServiceImpl.retrieveAllStocks();
         Assertions.assertNotNull(lStocks);
+        System.out.println(" Retrieve all is working ");
     }
 
     @Test
@@ -54,6 +56,7 @@ StockServiceImpl stockServiceImpl;
         Mockito.when(stockRepository.save(stock)).thenReturn(stock);
         Stock stock1 = stockServiceImpl.addStock(stock);
         Assertions.assertNotNull(stock1);
+        System.out.println(" Save is working ");
 
     }
 }
