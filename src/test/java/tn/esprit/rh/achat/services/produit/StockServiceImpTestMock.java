@@ -41,7 +41,7 @@ StockServiceImpl stockServiceImpl;
         Stock stock= Stock.builder().libelleStock("stock test").qte(100).qteMin(10).build();
 		stock.setIdStock(1L);
         Mockito.when(stockRepository.findById(1L)).thenReturn(Optional.of(stock));
-        Stock stock1 = stockServiceImpl.retrieveStock((1L);
+        Stock stock1 = stockServiceImpl.retrieveStock(1L);
         Assertions.assertNotNull(stock1);
         System.out.println(" Retrieve is working ");
     } 
