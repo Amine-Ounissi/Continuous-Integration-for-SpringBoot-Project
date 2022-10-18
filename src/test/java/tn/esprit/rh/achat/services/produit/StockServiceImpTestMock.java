@@ -38,10 +38,12 @@ StockServiceImpl stockServiceImpl;
     @Test
     public void testRetrieveStock() {
         Mockito.when(stockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
-        Stock stock1 = stockServiceImpl.retrieveStock(new Long(2));
+        Stock stock1 = stockServiceImpl.retrieveStock((stock.getIdStock());
         Assertions.assertNotNull(stock1);
         System.out.println(" Retrieve is working ");
+        
     }
+   
 
     @Test
     public void testRetrieveAllStock() {
@@ -50,6 +52,7 @@ StockServiceImpl stockServiceImpl;
         Assertions.assertNotNull(lStocks);
         System.out.println(" Retrieve all is working ");
     }
+    
 
     @Test
     public void testAddstock() {
@@ -58,5 +61,21 @@ StockServiceImpl stockServiceImpl;
         Assertions.assertNotNull(stock1);
         System.out.println(" Save is working ");
 
+    }
+   @Test
+    public void testUpdatestock() {
+        stock.setQteMin(6);
+        Mockito.when(stockRepository.save(stock)).thenReturn(stock);
+        Stock stock1 = stockServiceImpl.updateStock(stock);
+        Assertions.assertEquals(stock,stock1);
+        System.out.println(" update is working ");
+
+    }
+
+   @Test
+   public void testDeletestock() {
+       stockServiceImpl.deleteStock(stock.getIdStock());
+       Mockito.verify(stockRepository, Mockito.times(1)).deleteById(stock.getIdStock());
+       System.out.println(" delete is working ");
     }
 }
