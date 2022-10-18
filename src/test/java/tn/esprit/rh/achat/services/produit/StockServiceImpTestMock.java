@@ -38,7 +38,7 @@ StockServiceImpl stockServiceImpl;
     @Test
     public void testRetrieveStock() {
         Mockito.when(stockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
-        Stock stock1 = stockServiceImpl.retrieveStock((stock.getIdStock());
+        Stock stock1 = stockServiceImpl.retrieveStock(stock.getIdStock());
         Assertions.assertNotNull(stock1);
         System.out.println(" Retrieve is working ");
         
