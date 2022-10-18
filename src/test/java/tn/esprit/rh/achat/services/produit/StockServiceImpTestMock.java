@@ -14,6 +14,11 @@ import tn.esprit.rh.achat.repositories.StockRepository;
 import tn.esprit.rh.achat.services.IStockService;
 import tn.esprit.rh.achat.services.StockServiceImpl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
