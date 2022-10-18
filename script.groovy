@@ -13,7 +13,7 @@ def mvnsonarqube() {
 
 def JunitMockito() {
   echo "Testing the application..."
-  sh'mvn test'
+  sh'mvn test -Dtest=StockServiceImpTestMock -Dmaven.test.failure.ignore=true'
   
 }
 def deploynexus() {
