@@ -28,7 +28,7 @@ import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
-//@ExtendWith(MockitoExtension.class)
+@ExtendWith(MockitoExtension.class)
 public class StockServiceImpTestMock {
 @Mock
 StockRepository stockRepository;
