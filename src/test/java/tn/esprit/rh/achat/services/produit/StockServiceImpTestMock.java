@@ -10,15 +10,12 @@ import org.mockito.Mockito;
 
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.repositories.StockRepository;
 import tn.esprit.rh.achat.services.IStockService;
 import tn.esprit.rh.achat.services.StockServiceImpl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +30,7 @@ StockRepository stockRepository;
 @InjectMocks
 StockServiceImpl stockServiceImpl;
 
-    Stock stock= Stock.builder().libelleStock("stock test").qte(100).qteMin(10).build();
+    Stock stock= Stock.builder().libelleStock("stock test").qte(150).qteMin(15).build();
     List<Stock> listStocks = new ArrayList<Stock>() {
         {
             add(Stock.builder().libelleStock("stock test1").qte(150).qteMin(15).build());
@@ -41,16 +38,7 @@ StockServiceImpl stockServiceImpl;
         }
     };
     
-    @Test
-    public void testRetrieveStock() {
-        
-        Stock stock= Stock.builder().libelleStock("stock test").qte(100).qteMin(10).build();
-		stock.setIdStock(1L);
-        Mockito.when(stockRepository.findById(1L)).thenReturn(Optional.of(stock));
-        Stock stock1 = stockServiceImpl.retrieveStock(1L);
-        Assertions.assertNotNull(stock1);
-        System.out.println(" Retrieve is working ");
-    } 
+    
 
     @Test
     public void testRetrieveAllStock() {
@@ -58,18 +46,18 @@ StockServiceImpl stockServiceImpl;
         List<Stock> lStocks = stockServiceImpl.retrieveAllStocks();
         Assertions.assertNotNull(lStocks);
         System.out.println(" Retrieve all is working ");
+               
     }
     
 
     @Test
     public void testAddstock() {
-        Stock stock= Stock.builder().libelleStock("stock test").qte(100).qteMin(10).build();
-		stock.setIdStock(1L);
+        
 		        
         Mockito.when(stockRepository.save(stock)).thenReturn(stock);
         Stock stock1 = stockServiceImpl.addStock(stock);
         Assertions.assertNotNull(stock1);
-        System.out.println(" Save is working ");
+        System.out.println(" Save is working ");        
 
     }
    @Test
@@ -79,6 +67,7 @@ StockServiceImpl stockServiceImpl;
         Stock stock1 = stockServiceImpl.updateStock(stock);
         Assertions.assertEquals(stock,stock1);
         System.out.println(" update is working ");
+        
 
     }
 
@@ -88,4 +77,18 @@ StockServiceImpl stockServiceImpl;
        Mockito.verify(stockRepository, Mockito.times(1)).deleteById(stock.getIdStock());
        System.out.println(" delete is working ");
     }
+   
+   @Test
+   public void testRetrieveStock() {
+       
+      
+   	Stock stock= Stock.builder().libelleStock("stock test").qte(100).qteMin(10).build();
+		stock.setIdStock(1L);
+       Mockito.when(stockRepository.findById(1L)).thenReturn(Optional.of(stock));
+       Stock stock1 = stockServiceImpl.retrieveStock(1L);
+       Assertions.assertNotNull(stock1);
+       System.out.println(" Retrieve is working ");
+         
+   } 
+
 }
