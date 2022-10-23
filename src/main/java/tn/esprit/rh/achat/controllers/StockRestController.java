@@ -4,6 +4,8 @@ package tn.esprit.rh.achat.controllers;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.swagger2.mappers.ModelMapper;
+import tn.esprit.rh.achat.Dto.DtoStock;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.services.IStockService;
 
@@ -22,8 +24,7 @@ public class StockRestController {
 	@GetMapping("/retrieve-all-stocks")
 	@ResponseBody
 	public List<Stock> getStocks() {
-		List<Stock> list = stockService.retrieveAllStocks();
-		return list;
+		return stockService.retrieveAllStocks();
 	}
 
 	// http://localhost:8089/SpringMVC/stock/retrieve-stock/8
@@ -36,12 +37,11 @@ public class StockRestController {
 	// http://localhost:8089/SpringMVC/stock/add-stock
 	@PostMapping("/add-stock")
 	@ResponseBody
-	public Stock addStock(@RequestBody Stock s) {
-		Stock stock = stockService.addStock(s);
-		return stock;
+	public Stock addStock(@RequestBody DtoStock s) {
+		Stock stock = new Stock(s.getLibelleStock(),s.getQte(),s.getQteMin());
+		return stockService.addStock(stock);
 	}
 
-	// http://localhost:8089/SpringMVC/stock/remove-stock/{stock-id}
 	@DeleteMapping("/remove-stock/{stock-id}")
 	@ResponseBody
 	public void removeStock(@PathVariable("stock-id") Long stockId) {
@@ -51,7 +51,8 @@ public class StockRestController {
 	// http://localhost:8089/SpringMVC/stock/modify-stock
 	@PutMapping("/modify-stock")
 	@ResponseBody
-	public Stock modifyStock(@RequestBody Stock stock) {
+	public Stock modifyStock(@RequestBody DtoStock s) {
+		Stock stock = new Stock(s.getIdStock(),s.getLibelleStock(),s.getQte(),s.getQteMin(),s.getProduits());
 		return stockService.updateStock(stock);
 	}
 
