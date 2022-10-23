@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,11 +23,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Produit implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,10 +44,13 @@ public class Produit implements Serializable {
 	@OneToMany(mappedBy = "produit")
 	@JsonIgnore
 	private Set<DetailFacture> detailFacture;
-	@ManyToOne
-	@JsonIgnore
 	private CategorieProduit categorieProduit;
-	
+	public Produit(String codeProduit, String libelleProduit, float prix) {
+		super();
+		this.codeProduit = codeProduit;
+		this.libelleProduit = libelleProduit;
+		this.prix = prix;
+	}
 
 
 	
