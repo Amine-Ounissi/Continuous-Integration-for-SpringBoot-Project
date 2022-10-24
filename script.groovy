@@ -20,6 +20,9 @@ def deploynexus() {
 echo "Deploy to nexus..."
  sh'mvn deploy -DskipTests'
 }
-
+def buildJar() {
+  echo "building the application..."
+  sh'mvn clean package'
+}
 
   return this
