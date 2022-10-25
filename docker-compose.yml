@@ -1,29 +1,23 @@
-version: "3"
+version: "3.4"
 services:  
-  mysqldb:
-    image: mysql:5.6 
+  mysql-container:
+    container_name: mysql-container
+    ports:
+      - '3306:3306'
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=achatdb
+      - MYSQL_DATABASE=1
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     restart: always
-    ports:
-      - 3306:3306
-      
-  achat-back:
-    image: amineounissi/my-repo:achat.$IMAGE_NAME
-    ports:
-      - 8089:8089
     volumes:
-      - mysql-data:/var/lib/mysql
-    restart: unless-stopped
-    environment :
-      -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
-      -SPRING_DATASOURCE_USERNAME : root
-      -SPRING_DATASOURCE_PASSWORD : root
+      - mysql-container:/var/lib/mysql:rw
+    image: 'mysql:5.6'
+  achat-back:
     depends_on:
-      - mysqldb
-    links:
-      - mysqldb:mysqldb
+      - mysql-container
+    container_name: achat-back
+    image: amineounissi/my-repo:$IMAGE_NAME    
+    ports:
+      - '8089:8089'
+
 volumes:
-  mysql-data:
+  mysql-container: { }
