@@ -14,7 +14,7 @@ pipeline {
          }
        }
      }
-     stage("increment version") {
+   /*  stage("increment version") {
       steps {
          script {
            echo 'incrementing app version...'
@@ -27,6 +27,7 @@ pipeline {
          }
        }
      }
+    */
     stage("build jar") {
       
       steps {
