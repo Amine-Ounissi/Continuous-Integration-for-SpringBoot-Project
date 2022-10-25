@@ -3,7 +3,7 @@ services:
   mysql-container:
     container_name: mysql-container
     ports:
-      - '3307:3306'
+      - '3306:3306'
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     volumes:
