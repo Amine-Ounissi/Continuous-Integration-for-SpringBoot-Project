@@ -27,9 +27,9 @@ def buildJar() {
 def buildImage() {
   echo "building the docker image..."
   withCredentials([usernamePassword(credentialsId: 'Docker-hub-repo', passwordVariable: 'PASS', usernameVariable:'USER')]) {
-      sh 'docker build -t amineounissi/my-repo:achat-1.0 .'
+      sh 'docker build -t amineounissi/my-repo:achat.$IMAGE_NAME .'
       sh "docker login -u $USER -p $PASS"
-      sh 'docker push amineounissi/my-repo:achat-1.0'           
+      sh 'docker push amineounissi/my-repo:achat.$IMAGE_NAME'           
    }   
 }
 
