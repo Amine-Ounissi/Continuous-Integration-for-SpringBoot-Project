@@ -1,16 +1,7 @@
 version: "3.4"
 services:
-  spring_app:
-    image: amineounissi/my-repo:achat.$IMAGE_NAME
-    container_name: achat-back
-    restart: always
-    ports:
-      - "8089:8089"
-    depends_on:
-      - mysqldb
-
-  mysqldb:
-    container_name: mysqldb
+    mysql_container:
+    container_name: mysql_container
     image: mysql:5.6
     user: root
     restart: always
@@ -21,6 +12,15 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     volumes:
       - mysql_container:/var/lib/mysql:rw
+      
+    achat-back:
+    container_name: achat-back
+    image: amineounissi/my-repo:achat.$IMAGE_NAME    
+    restart: always
+    ports:
+      - "8089:8089"
+    depends_on:
+      - mysql_container
 
 volumes:
   mysql_container: { }
