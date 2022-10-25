@@ -1,26 +1,13 @@
 version: "3.4"
-services:
-  mysql_container:
-    container_name: mysql_container
-    image: mysql:5.6
-    restart: always
-    ports:
-      - 3307:3307
-    environment:
-      - MYSQL_USER=root
-      - MYSQL_DATABASE=achatdb
-      - MYSQL_ALLOW_EMPTY_PASSWORD=1
-    volumes:
-      - mysql_container:/var/lib/mysql:rw
-      
+services:     
   achat-back:
     depends_on:
-      - mysql_container
+      - mysqld
     container_name: achat-back
     image: amineounissi/my-repo:achat.2.5.9-18    
     ports:
       - "8089:8089"
 
 volumes:
-  mysql_container: { }
+  mysqld: { }
 
