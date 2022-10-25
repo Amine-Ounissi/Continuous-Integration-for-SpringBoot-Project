@@ -35,7 +35,8 @@ def buildImage() {
 
 def deployDocker() {
   echo "running docker-compose..."
-  sh'docker-compose up'
+  sh'docker compose up'
+  sh'docker compose ps'
   sh'docker ps -a'
 }
 
