@@ -5,7 +5,7 @@ services:
     image: mysql:5.6
     restart: always
     ports:
-      - 3307:3306
+      - 3307:3307
     networks:
       - springmysql-net
     environment:
@@ -20,8 +20,7 @@ services:
     image: amineounissi/my-repo:achat.2.5.9-18    
     ports:
       - "8089:8089"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/achatdb?useSSL=false
+
     networks:
       - springmysql-net
     depends_on:
