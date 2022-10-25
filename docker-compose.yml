@@ -1,6 +1,6 @@
 version: "3.4"
 services:
-    mysql_container:
+  mysql_container:
     container_name: mysql_container
     image: mysql:5.6
     user: root
@@ -13,7 +13,7 @@ services:
     volumes:
       - mysql_container:/var/lib/mysql:rw
       
-    achat-back:
+  achat-back:
     container_name: achat-back
     image: amineounissi/my-repo:achat.$IMAGE_NAME    
     restart: always
