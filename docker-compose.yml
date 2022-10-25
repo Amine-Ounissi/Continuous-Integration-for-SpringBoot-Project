@@ -3,11 +3,13 @@ services:
   mysql_container:
     container_name: mysql_container
     image: mysql:5.6
-    user: 'root'@'172.17.0.1'
     restart: always
     ports:
       - 3307:3306
+    networks:
+      - springmysql-net
     environment:
+      - MYSQL_USER=root
       - MYSQL_DATABASE=achatdb
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     volumes:
@@ -19,9 +21,14 @@ services:
     ports:
       - "8089:8089"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/achatdb?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/achatdb?createDatabaseIfNotExist=true?useSSL=false
+    networks:
+      - springmysql-net
     depends_on:
       - mysql_container
 
 volumes:
   mysql_container: { }
+  
+networks:
+  springmysql-net:
