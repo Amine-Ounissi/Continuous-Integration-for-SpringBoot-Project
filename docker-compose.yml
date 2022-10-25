@@ -3,7 +3,6 @@ services:
   mysql_container:
     container_name: mysql_container
     image: mysql:5.6
-    user: root
     restart: always
     ports:
       - 3307:3306
