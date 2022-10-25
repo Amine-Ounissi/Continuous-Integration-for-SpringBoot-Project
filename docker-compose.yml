@@ -5,8 +5,9 @@ services:
     ports:
       - '3306:3306'
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-    restart: unless-stopped
+      - MYSQL_DATABASE=1
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    restart: always
     volumes:
       - mysql-container:/var/lib/mysql:rw
     image: 'mysql:5.6'
@@ -16,7 +17,7 @@ services:
     container_name: achat-back
     image: amineounissi/my-repo:achat.2.5.9-18    
     ports:
-      - "8089:8089"
+      - '8089:8089'
 
 volumes:
   mysql-container: { }
