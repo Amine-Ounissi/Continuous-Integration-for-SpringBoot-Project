@@ -28,7 +28,7 @@ pipeline {
        }
      }
     
-   /* stage("build jar") {
+    stage("build jar") {
       
       steps {
         script {
@@ -42,7 +42,7 @@ pipeline {
          gv.buildImage()         
         }         
       }
-    } */
+    } 
    stage("deploy docker") {      
       steps {
         script {
