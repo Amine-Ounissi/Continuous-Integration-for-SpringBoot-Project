@@ -5,9 +5,7 @@ services:
     ports:
       - '3307:3306'
     environment:
-      - MYSQL_DATABASE=1
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
-    restart: always
     volumes:
       - mysql-container:/var/lib/mysql:rw
     image: 'mysql:5.6'
