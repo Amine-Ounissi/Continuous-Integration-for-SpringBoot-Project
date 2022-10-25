@@ -35,7 +35,7 @@ pipeline {
           gv.buildJar()    
       }
     }
-  } /*
+  } 
    stage("build image") {      
       steps {
         script {
@@ -49,6 +49,6 @@ pipeline {
           gv.deployDocker()    
       }
     } 
-   } */
+   } 
   }   
 }   
