@@ -15,7 +15,7 @@ services:
       
   achat-back:
     container_name: achat-back
-    image: amineounissi/my-repo:achat.$IMAGE_NAME    
+    image: amineounissi/my-repo:achat.2.5.9-18    
     restart: always
     ports:
       - "8089:8089"
