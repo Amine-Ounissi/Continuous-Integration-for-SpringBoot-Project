@@ -6,8 +6,6 @@ services:
     restart: always
     ports:
       - 3307:3307
-    networks:
-      - springmysql-net
     environment:
       - MYSQL_USER=root
       - MYSQL_DATABASE=achatdb
@@ -23,11 +21,6 @@ services:
     ports:
       - "8089:8089"
 
-    networks:
-      - springmysql-net
-
 volumes:
   mysql_container: { }
-  
-networks:
-  springmysql-net:
+
