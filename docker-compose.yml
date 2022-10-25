@@ -16,6 +16,8 @@ services:
       - mysql_container:/var/lib/mysql:rw
       
   achat-back:
+    depends_on:
+      - mysql_container
     container_name: achat-back
     image: amineounissi/my-repo:achat.2.5.9-18    
     ports:
@@ -23,8 +25,6 @@ services:
 
     networks:
       - springmysql-net
-    depends_on:
-      - mysql_container
 
 volumes:
   mysql_container: { }
