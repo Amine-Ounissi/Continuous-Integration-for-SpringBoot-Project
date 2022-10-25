@@ -2,30 +2,25 @@ version: "3.4"
 services:
   spring_app:
     image: amineounissi/my-repo:achat.$IMAGE_NAME
-    container_name: achat
-    restart: on-failure
+    container_name: achat-back
+    restart: always
     ports:
       - "8089:8089"
-    environment:
-      - spring.datasource.url=jdbc:mysql://localhost:3306/achatdb?createDatabaseIfNotExist=true
-    networks:
-      - springmysql-net
     depends_on:
       - mysqldb
 
   mysqldb:
     container_name: mysqldb
     image: mysql:5.6
-    restart: unless-stopped
-    networks:
-      - springmysql-net
+    user: root
+    restart: always
+    ports:
+      - 3308:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=achatdb
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
     volumes:
-      - /home/mysql/data:/var/lib/mysql
+      - mysql_container:/var/lib/mysql:rw
 
-networks:
-  springmysql-net:      
+volumes:
+  mysql_container: { }
