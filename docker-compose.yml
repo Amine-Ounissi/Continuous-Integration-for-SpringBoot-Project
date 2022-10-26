@@ -16,7 +16,7 @@ services:
     depends_on:
       - mysql-container
     container_name: achat-back
-    image: amineounissi/my-repo:achat.2.5.9-47    
+    image: amineounissi/my-repo:achat.$IMAGE_NAME    
     ports:
       - '8090:8089'
 
