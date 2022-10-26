@@ -3,7 +3,7 @@ services:
   mysql-container:
     container_name: mysql-container
     ports:
-      - '3306:3306'
+      - '3307:3306'
     restart: always
     environment:
       - MYSQL_DATABASE=achatdb
@@ -11,6 +11,7 @@ services:
     volumes:
       - mysql-container:/var/lib/mysql:rw
     image: 'mysql:5.6'
+    
   achat-back:
     depends_on:
       - mysql-container
