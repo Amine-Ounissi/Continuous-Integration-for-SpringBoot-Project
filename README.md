@@ -1,6 +1,6 @@
-## Continuous Integration and Continuous Delivery for a SpringBoot Project.
+# Continuous Integration and Continuous Delivery for Backend SpringBoot + MySQL Project.
 
-# Continuous Intergration : 
+## Continuous Intergration : 
 
 ● Vagrant to build and manage virtual machine.
 
@@ -22,7 +22,7 @@
 
 ![Capture d’écran (1977)](https://user-images.githubusercontent.com/73407173/197989651-940743ef-528d-4e5d-a38d-c34099e44e7f.png)
 
-# Continuous Delivery : 
+## Continuous Delivery : 
 
 ● Dynamically Increment Application Version.
 
